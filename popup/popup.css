@@ -1,0 +1,162 @@
+/* Latinify Popup Styles - Classical Roman Minimalist */
+
+:root {
+  --color-ivory: #F5F2EB;
+  --color-parchment: #EDE8DC;
+  --color-charcoal: #2C2C2C;
+  --color-warm-gray: #6B6560;
+  --color-gold: #C9A227;
+  --color-gold-glow: rgba(201, 162, 39, 0.4);
+  --color-terracotta: #C45C3E;
+  --color-laurel: #5C7A5C;
+  
+  --font-main: 'EB Garamond', Georgia, 'Times New Roman', serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 240px;
+  min-height: 120px;
+  background: var(--color-ivory);
+  font-family: var(--font-main);
+  color: var(--color-charcoal);
+  
+  /* Subtle parchment texture via gradient */
+  background-image: 
+    radial-gradient(ellipse at 20% 30%, rgba(237, 232, 220, 0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(237, 232, 220, 0.4) 0%, transparent 50%),
+    linear-gradient(180deg, var(--color-ivory) 0%, var(--color-parchment) 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 20px;
+  min-height: 120px;
+}
+
+/* Toggle Label - "Fac Latinum" */
+.toggle-label {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-charcoal);
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Toggle Switch Container */
+.toggle-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide default checkbox */
+.toggle-input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Custom Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-warm-gray);
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--color-ivory);
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Toggle ON State */
+.toggle-input:checked + .toggle-switch .toggle-slider {
+  background-color: var(--color-gold);
+  box-shadow: 0 0 12px var(--color-gold-glow);
+}
+
+.toggle-input:checked + .toggle-switch .toggle-slider::before {
+  transform: translateX(30px);
+  background-color: #FFFEF8;
+}
+
+/* Toggle Focus State */
+.toggle-input:focus + .toggle-switch .toggle-slider {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Toggle Disabled State */
+.toggle-input:disabled + .toggle-switch {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Status Text */
+.status-text {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--color-warm-gray);
+  margin-top: 12px;
+  min-height: 18px;
+  text-align: center;
+  font-style: italic;
+  transition: color 0.2s ease;
+}
+
+.status-text.error {
+  color: var(--color-terracotta);
+  font-style: normal;
+}
+
+.status-text.success {
+  color: var(--color-laurel);
+}
+
+/* Subtle animation for the whole container when translating */
+.container.translating .toggle-label {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
