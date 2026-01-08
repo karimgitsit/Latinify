@@ -1,7 +1,7 @@
 // Latinify Background Service Worker
 
 const CONFIG = {
-  API_KEY: 'AIzaSyB3nx1rR5P2XHt11IZz91XBRAg0BMPNbmU',
+  API_KEY: 'input',
   API_URL: 'https://translation.googleapis.com/language/translate/v2',
   BATCH_SIZE: 100
 };
